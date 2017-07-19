@@ -159,6 +159,8 @@ function processObject(object, output, nested) {
       continue
     }
 
+
+
     if (output.properties[key]) {
       var entry = output.properties[key]
       var hasTypeArray = Array.isArray(entry.type)
@@ -182,6 +184,9 @@ function processObject(object, output, nested) {
 
     output.properties[key] = {}
     output.properties[key].type = type
+    if (type === 'string' || type === 'number') {
+      output.properties[key].default = value
+    }
 
     if (format) {
       output.properties[key].format = format
